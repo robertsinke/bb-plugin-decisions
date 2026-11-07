@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "server.ts",
+    "app.tsx",
+    "ask.ts",
+    "ask.test.ts",
+    "usage.ts",
+    "usage.test.ts",
+    "backfill.ts",
+    "backfill.test.ts",
+    "wording.ts",
+    "wording-store.ts",
+    "wording.test.ts",
+    "css.d.ts"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "bb-plugin-decisions",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "bb": ">=0.48",
+    "bbPluginSdk": ">=0.6.104"
+  },
+  "bb": {
+    "name": "Decisions",
+    "description": "Ask a TypeSafe decision model, such as Jev, from any BB plugin or thread.",
+    "branding": {
+      "icon": "Scale"
+    },
+    "server": "./server.ts",
+    "app": "./app.tsx",
+    "skills": ["skills"]
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --test ask.test.ts usage.test.ts backfill.test.ts wording.test.ts",
+    "build": "bb plugin build ."
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "^0.7.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@get-bb/plugin-sdk": "0.6.104",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}

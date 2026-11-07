@@ -1,0 +1,44 @@
+.du{height:100%;overflow:auto;padding:28px 32px 40px;color:var(--foreground);background:var(--background);font-family:var(--font-sans,inherit);font-size:13px}
+.du,.du *{box-sizing:border-box}
+.du-kicker{margin:0;color:var(--muted-foreground);font-size:12px}
+.du-figure{margin:6px 0 0;font-size:56px;font-weight:560;letter-spacing:-.045em;line-height:.95;font-variant-numeric:tabular-nums;animation:du-in 180ms ease}
+.du-caption{margin:12px 0 0;max-width:40em;min-height:1.4em;color:var(--muted-foreground)}
+.du-meta{margin:20px 0 28px;color:var(--muted-foreground)}
+.du-chart svg{display:block;width:100%;height:280px;overflow:visible}
+.du-base{stroke:var(--border-hairline,var(--border));stroke-width:1}
+.du-bar{fill:var(--foreground);opacity:.28;transform-box:fill-box;transform-origin:center bottom;animation:du-rise 520ms cubic-bezier(.2,.8,.2,1) both}
+.du-chart g.is-hot .du-bar{opacity:1}
+.du-hit{fill:transparent}
+.du-axis{display:flex;justify-content:space-between;margin-top:8px;color:var(--muted-foreground);font-variant-numeric:tabular-nums}
+.du-callers{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.du-callers button{display:grid;grid-template-columns:minmax(0,11em) 1fr auto;gap:12px;align-items:center;width:100%;border:0;border-radius:var(--radius);background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;padding:8px 10px}
+.du-callers button:hover,.du-callers button:focus-visible{background:var(--state-hover)}
+.du-callers button:hover .du-track span,.du-callers button:focus-visible .du-track span{opacity:1}
+.du-track{height:6px;border-radius:99px;background:var(--surface-recessed);overflow:hidden}
+.du-track span{display:block;height:100%;background:var(--foreground);opacity:.45;transform-origin:left center;animation:du-grow 520ms cubic-bezier(.2,.8,.2,1) both}
+.du-callers button.is-hot .du-track span{opacity:1}
+.du-count{font-variant-numeric:tabular-nums}
+.du-menu{display:flex;flex-direction:column;gap:2px;padding:8px;color:var(--sidebar-foreground,var(--foreground));font-family:var(--font-sans,inherit);font-size:13px}
+.du-menu p{margin:14px 8px 4px;color:var(--muted-foreground);font-size:12px}
+.du-menu button{border:0;border-radius:var(--radius);background:transparent;color:inherit;font:inherit;text-align:left;padding:7px 8px;cursor:pointer}
+.du-menu button:hover{background:var(--state-hover)}
+.du-menu button[aria-current="page"]{background:var(--surface-selected)}
+.du-menu button:focus-visible,.du button:focus-visible,.du-chart:focus-visible,.du-ask textarea:focus-visible,.du-ask input:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.du-ask{max-width:40em}
+.du-ask label{display:block;margin-top:22px}
+.du-ask label span{display:block;margin-bottom:6px;color:var(--muted-foreground);font-size:12px}
+.du-ask textarea{width:100%;resize:vertical;border:0;border-bottom:1px solid var(--border-hairline,var(--border));border-radius:0;background:transparent;color:inherit;font:inherit;line-height:1.45;padding:8px 0}
+.du-ask textarea.du-lead,.du-ask input.du-lead{font-size:22px;font-weight:560;letter-spacing:-.03em;line-height:1.3}
+.du-ask input.du-lead{width:100%;border:0;border-bottom:1px solid var(--border-hairline,var(--border));border-radius:0;background:transparent;color:inherit;padding:8px 0}
+.du-hint{margin:8px 0 0;color:var(--muted-foreground)}
+.du-actions{display:flex;align-items:center;gap:12px;margin-top:22px}
+.du-actions button{border:0;border-radius:var(--radius);background:var(--foreground);color:var(--background);font:inherit;padding:7px 12px;cursor:pointer}
+.du-actions button.du-quiet{background:transparent;color:inherit;padding-left:0}
+.du-actions button:disabled{opacity:.35;cursor:default}
+.du-saved{color:var(--muted-foreground)}
+@keyframes du-rise{from{transform:scaleY(.05)}to{transform:scaleY(1)}}
+@keyframes du-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes du-in{from{opacity:.45}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  .du-bar,.du-track span,.du-figure{animation:none}
+}

@@ -23,16 +23,24 @@ function named(row: WordingRow): NamedWording {
   };
 }
 
-/** One named question, so the inbox has something to ask before anyone renames it. */
+/** The built-in row is the code question. A start writes it again. A question you added is left as you saved it. */
 export function ensureWordings(db: UsageSql): void {
-  const count = db.prepare("SELECT COUNT(*) AS n FROM decision_wording").get() as { n: number };
-  if (count.n > 0) return;
-  db.prepare("INSERT INTO decision_wording (id, name, question, yes, no, used, sort) VALUES (?, ?, ?, ?, ?, 1, 0)").run(
-    "attention",
-    DEFAULT_NAME,
+  const existing = db.prepare("SELECT id FROM decision_wording WHERE id = ?").get("attention") as { id: string } | undefined;
+  if (!existing) {
+    db.prepare("INSERT INTO decision_wording (id, name, question, yes, no, used, sort) VALUES (?, ?, ?, ?, ?, 1, 0)").run(
+      "attention",
+      DEFAULT_NAME,
+      DEFAULT_WORDING.question,
+      DEFAULT_WORDING.yes,
+      DEFAULT_WORDING.no,
+    );
+    return;
+  }
+  db.prepare("UPDATE decision_wording SET question = ?, yes = ?, no = ? WHERE id = ?").run(
     DEFAULT_WORDING.question,
     DEFAULT_WORDING.yes,
     DEFAULT_WORDING.no,
+    "attention",
   );
 }
 

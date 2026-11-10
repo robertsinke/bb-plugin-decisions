@@ -21,6 +21,21 @@ test("a saved question is kept and an empty one is refused", () => {
   assert.throws(() => assertWording({ ...saved, yes: "  " }), /Yes is empty/);
 });
 
+test("a start writes the built-in question from the code and leaves a question you added", () => {
+  const store = db();
+  ensureWordings(store);
+  saveWording(store, { id: "attention", name: "Needs attention", question: "Old?", yes: "Old yes.", no: "Old no." });
+  ensureWordings(store);
+  assert.equal(usedWording(store).question, DEFAULT_WORDING.question);
+  assert.equal(usedWording(store).yes, DEFAULT_WORDING.yes);
+  assert.equal(usedWording(store).no, DEFAULT_WORDING.no);
+  assert.equal(listWordings(store)[0]?.name, "Needs attention");
+  const added = addWording(store, "Mine");
+  saveWording(store, { id: added.id, name: added.name, question: "Custom?", yes: "Y.", no: "N." });
+  ensureWordings(store);
+  assert.equal(listWordings(store).find((row) => row.id === added.id)?.question, "Custom?");
+});
+
 test("a question keeps the name you give it, and the inbox uses the marked one", () => {
   const store = db();
   ensureWordings(store);

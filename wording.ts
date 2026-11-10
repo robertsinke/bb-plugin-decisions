@@ -2,9 +2,9 @@
 export const DEFAULT_NAME = "Needs attention";
 
 export const DEFAULT_WORDING = {
-  question: "Messages are in order. Look only at message {n}. Does that one message still need the reader to act?",
-  yes: "It asks the reader to reply, decide, pay, or fix something, and no later message settles that point.",
-  no: "It does not ask the reader. Their own message does not ask them, unless it leaves a task they have not done. A later message settles it when the other person answers, or when the reader replies. Read or unread is not evidence.",
+  question: "Messages are in order. Look only at message {n}. mine means the reader sent it. Does that message leave the reader with the next action?",
+  yes: "The next action belongs to the reader. The other person asked them to reply, decide, pay, or fix something, and no later message settles that. Or the reader sent it and it leaves a task they have not done.",
+  no: "The next action does not belong to the reader. A message the reader sent gives the next action to the other person. A later message settles an earlier ask when the other person answers or the reader replies. Read or unread is not evidence.",
 };
 
 export interface Wording {

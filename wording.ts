@@ -3,8 +3,8 @@ export const DEFAULT_NAME = "Needs attention";
 
 export const DEFAULT_WORDING = {
   question: "Messages are in order. Look only at message {n}. mine means the reader sent it. Does that message leave the reader with the next action?",
-  yes: "The next action belongs to the reader. The other person asked them to reply, decide, pay, or fix something, and no later message settles that. Or the reader sent it and it leaves a task they have not done.",
-  no: "The next action does not belong to the reader. A message the reader sent gives the next action to the other person. A later message settles an earlier ask when the other person answers or the reader replies. Read or unread is not evidence.",
+  yes: "The next action belongs to the reader. The other person asked them to reply, decide, pay, or fix something, and no later message settles that. A message the reader sent is yes only when it promises work the reader has not done yet, such as sending a file or an answer the reader still owes.",
+  no: "The next action does not belong to the reader. A message the reader sent gives the next action to the other person. A follow-up, a proposed time, and asking them to let the reader know are their action. Waiting for their answer is not a task the reader still has. A later message settles an earlier ask. Read or unread is not evidence.",
 };
 
 export interface Wording {
